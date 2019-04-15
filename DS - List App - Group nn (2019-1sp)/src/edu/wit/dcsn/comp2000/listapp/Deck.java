@@ -88,6 +88,7 @@ public class Deck extends Pile
 		super.add(new Card(Rank.KING, Suit.DIAMONDS));//King
 		
 		}	// end constructor
+	
 	public ArrayList<Hand> deal(int players){
 		ArrayList<Hand> hands = new ArrayList<Hand>();
 		super.shuffle();
@@ -97,7 +98,7 @@ public class Deck extends Pile
 			Hand hand = new Hand();
 			for(int j = 0; j < 7; j++)		//adds seven cards to the hand
 			{
-				hand.add(super.removetop());
+				hand.add(super.removeTop());
 			}
 			hands.add(hand);
 		}

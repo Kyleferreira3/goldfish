@@ -41,22 +41,22 @@ public class Card implements Comparable<Card>
 		this.rank = rank;
 		}	// end constructor
 
-		public Suit getsuit() {
+		public Suit getSuit() {
 			return suit;
 		}
-		public Rank getrank() {
+		public Rank getRank() {
 			return rank;
 		}
 
 		
 		/* (non-Javadoc)
 		 * @see java.lang.Comparable#compareTo(java.lang.Object)
-		 * return 0 if ranks of cards match
+		 * return 0 if ranks of cards match, dont need to compare suit
 		 */
 	@Override
 	public int compareTo(Card card)
 		{
-		if (this.getrank()==card.getrank()) {
+		if (this.getRank()==card.getRank()) {
 			return 0;
 		}else {
 			return -1;
@@ -86,7 +86,7 @@ public class Card implements Comparable<Card>
 	public String toString()
 		{
 		
-		return this.getrank().getGraphic()+ " " + this.getsuit().getDisplayName();
+		return this.getRank().getGraphic()+ " " + this.getSuit().getDisplayName();
 		
 		}	// end toString()
 

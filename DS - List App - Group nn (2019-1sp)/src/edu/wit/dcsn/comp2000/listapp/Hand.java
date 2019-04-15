@@ -48,7 +48,7 @@ public class Hand extends Pile
 		int x = 0;
 		String s = "";
 		while (x < this.Length()) {
-			s += "[" +super.getcard(x).getrank()+"]";//+super.getcard(x).getsuit().getDisplayName()+"]";
+			s += "[" +super.getCard(x).getRank()+"]";//+super.getcard(x).getsuit().getDisplayName()+"]";
 			x++;
 		}
 		return s;

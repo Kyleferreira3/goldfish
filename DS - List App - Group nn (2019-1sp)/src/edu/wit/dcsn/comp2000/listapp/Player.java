@@ -34,12 +34,19 @@ public class Player
 		hand.addtop(card);
 	}
 	
-	public String getname() {
+	public String getName() {
 		return name;
 	}
-	public Hand gethand() {
+	
+	public Hand getHand() {
 		return hand;
 	}
+	
+	public String toString() 
+	{
+		return name;
+	}
+	
 	/**
 	 * 
 	 */

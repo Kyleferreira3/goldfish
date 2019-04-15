@@ -39,7 +39,7 @@ public class Pile
 			return Pile.remove(card);
 		}else throw new IndexOutOfBoundsException("");
 	}
-	public Card getcard(int card) {
+	public Card getCard(int card) {
 		if (card < Pile.size()) {
 			return Pile.get(card);
 		} else {
@@ -54,11 +54,11 @@ public class Pile
 		Pile.add(0, card);
 	}
 	
-	public Card gettop() {//returns top card in pile
+	public Card getTop() {//returns top card in pile
 		return Pile.getFirst();
 	}
 	
-	public Card removetop() {
+	public Card removeTop() {
 		if(!Pile.isEmpty()) {
 			return Pile.removeFirst();
 		}else throw new NoSuchElementException();
