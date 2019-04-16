@@ -12,8 +12,8 @@ public class gofish {
 	private static Deck deck = new Deck();
 	private static Pile discard = new Pile();
 	private static Card topcard;
-	private static int index = 1;
-	private static int p1, p2;
+	private static int index = 0;
+	private static int p1, p2, p3, p4;
 	private static ArrayList<Hand> hands;
 	
 	public static void main(String[] args) {
@@ -24,15 +24,18 @@ public class gofish {
 		for (Hand num : hands) {//prints both hands for testing purposes
 			System.out.println(num);
 		}
-	//	Player current = players.get(index);
+		
+		
 		System.out.println();
 		
 		while (running) {
 		//loop checks for matches in dealt hand and gets rid of cards and adds a point
-			checkhands();
+			checkHands();
 			for (Hand num : hands) {//prints both hands for testing purposes
-				System.out.println(num + " Player "+ hands.indexOf(num)+"'s hand");
+				int handIndex = hands.indexOf(num);
+				System.out.println(num + " Player "+ (handIndex+1)+"'s hand");
 			}
+			
 			System.out.println("Select a card: ");
 			int x = in.nextInt();
 		
@@ -68,6 +71,7 @@ public class gofish {
 		
 		}//end while
 	}//end main
+	
 	private static void initialize() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Lets play go fish!");
@@ -82,23 +86,55 @@ public class gofish {
 		
 	}
 	
-	private static void playerturn() {
+	private static void draw() {
 		
 	}
 	
-	private static void checkhands() {
-		for (int i = 0; i <hands.get(0).Length(); i++) {
-			for (int j = 1; j < hands.get(0).Length(); j++) {
-				if (i!=j) {
-					if(hands.get(0).getCard(i) != null && hands.get(0).getCard(i).compareTo(hands.get(0).getCard(j))==0) {
-						//System.out.println("match");
-						hands.get(0).remove(i);
-						hands.get(0).remove(j-1);
-						p1++;
-						System.out.println("\nPlayer 1 got a match!");
-						printscore();
-						//System.out.println(hands.get(0)+ " Player 1's hand");
-						System.out.println();
+	private static void playerTurn() {
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("Select a card: ");
+		int x = in.nextInt();
+	}
+	
+	private static void checkHands() {
+		for (int x = 0; x < hands.size();x++) {
+			for (int i = 0; i <hands.get(x).Length(); i++) {
+				for (int j = 1; j < hands.get(x).Length(); j++) {
+					if (i!=j) {
+						if(hands.get(x).getCard(i) != null && hands.get(x).getCard(i).compareTo(hands.get(x).getCard(j))==0) {
+							hands.get(x).remove(i);
+							hands.get(x).remove(j-1);
+							if (x == 0) {
+								p1++;
+							} else if(x == 1) {
+								p2++;
+							}else if(x == 2) {
+								p3++;
+							}else if (x == 3) {
+								p4++;
+							}
+							
+							System.out.println("\nPlayer " + x + " got a match!");
+							System.out.println();
+					}
+				}
+			}
+		}//end for loop
+		}
+		/*
+			for (int i = 0; i <hands.get(0).Length(); i++) {
+				for (int j = 1; j < hands.get(0).Length(); j++) {
+					if (i!=j) {
+						if(hands.get(0).getCard(i) != null && hands.get(0).getCard(i).compareTo(hands.get(0).getCard(j))==0) {
+							//System.out.println("match");
+							hands.get(0).remove(i);
+							hands.get(0).remove(j-1);
+							p1++;
+							System.out.println("\nPlayer 1 got a match!");
+							//printscore();
+							//System.out.println(hands.get(0)+ " Player 1's hand");
+							System.out.println();
 					}
 				}
 			}
@@ -112,13 +148,14 @@ public class gofish {
 						hands.get(1).remove(j-1);
 						System.out.println("\nPlayer 2 got a match!");
 						p2++;
-						printscore();
+						//printscore();
 						//System.out.println(hands.get(1) + " Player 2's hand");
 						System.out.println();
 					}
 				}
 			}
 		}//end for loop
+		*/
 	}
 	
 	private static void printscore() {
